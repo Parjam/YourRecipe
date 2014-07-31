@@ -28,32 +28,48 @@ post '/users' do
   User.create(params)
   user = User.find_by(email: params[:email])
   session[:user_id] = user.id
-  redirect "/recipes/#{current_user.id}"
+  redirect "/recipes"
 end
 
-
-# display the form to create a recipe
-get '/recipes/new' do
-  p "got to route"
-  erb :create_recipe
+# user can logout
+post '/logout' do
+  log_out
+  redirect '/'
 end
 
 # display a list of all recipes
-get '/recipes/:id' do
-  erb :recipe
+get '/recipes' do
+  if logged_in?
+    erb :recipe
+  else
+    redirect '/'
+  end
 end
+
+# display the form to create a recipe
+get '/recipes/new' do
+  if logged_in?
+    erb :create_recipe
+  else
+    redirect '/'
+  end
+end
+
 
 # create a recipe in the database
 post '/recipes' do
-  Recipe.create(params)
+  recipe = Recipe.create(params)
+  # recipe.user_id = session[:user_id]
+  redirect '/recipes'
 end
 
 # updates a specific recipe in the database only by the user that created it
 patch '/recipes/:id' do
-end
-
-# updates a specific recipe in the database only by the user that created it
-delete '/recipes/:id' do
+  if logged_in?
+    erb :recipe_update
+  else
+    redirect'/'
+  end
 end
 
 
