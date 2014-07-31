@@ -1,1 +1,3 @@
-<%= Recipe.all %>
+<% Recipe.all.each do |recipe| %>
+<%= recipe.title%>
+<% end %>

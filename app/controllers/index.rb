@@ -31,26 +31,29 @@ post '/users' do
   redirect "/recipes/#{current_user.id}"
 end
 
+
+# display the form to create a recipe
+get '/recipes/new' do
+  p "got to route"
+  erb :create_recipe
+end
+
 # display a list of all recipes
 get '/recipes/:id' do
   erb :recipe
 end
 
-# display the form to create a recipe
-get 'recipes/new' do
-  erb :create_recipe
-end
-
 # create a recipe in the database
-post 'recipes' do
+post '/recipes' do
+  Recipe.create(params)
 end
 
 # updates a specific recipe in the database only by the user that created it
-patch 'recipes/:id' do
+patch '/recipes/:id' do
 end
 
 # updates a specific recipe in the database only by the user that created it
-delete 'recipes/:id' do
+delete '/recipes/:id' do
 end
 
 

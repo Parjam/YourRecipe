@@ -4,7 +4,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :category
       t.string :title
       t.string :yield
-      t.text :ingredient
+      t.text :ingredients
       t.text :content
       t.string :level
       t.string :country
