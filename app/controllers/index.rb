@@ -33,7 +33,7 @@ end
 
 # user can logout
 post '/logout' do
-  log_out
+  # log_out
   redirect '/'
 end
 
@@ -52,11 +52,6 @@ end
 post '/recipes' do
   recipe = Recipe.create(params)
   redirect '/recipes'
-end
-
-# updates a specific recipe in the database only by the user that created it
-patch '/recipes/:id' do
-  erb :recipe_update
 end
 
 

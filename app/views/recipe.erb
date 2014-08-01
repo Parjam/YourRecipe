@@ -1,10 +1,13 @@
 <div class="container">
-<% Recipe.all.each do |recipe| %>
-<p><%= recipe.title%></p>
-<% end %>
+  <% Recipe.all.each do |recipe| %>
+  <p><%= recipe.title%></p>
+  <% end %>
+  <form action="/recipes/new" method="get">
+    <input type="submit" value="Create a recipe">
+  </form>
+  <form action="/logout" method="post"><br>
+    <input type="submit" value="Log out">
+  </form>
 </div>
-<p>Create a recipe</p>
-<p>Update a recipe</p>
-<p>Log out</p>
 
 
