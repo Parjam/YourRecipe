@@ -48,6 +48,7 @@ get '/recipes/new' do
 end
 
 get '/recipe/:id' do
+   @recipe = Recipe.find(params[:id])
   erb :specific_recipe
 end
 
