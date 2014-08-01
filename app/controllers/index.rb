@@ -42,12 +42,13 @@ get '/recipes' do
   erb :recipe
 end
 
+
 # display the form to create a recipe
 get '/recipes/new' do
   erb :create_recipe
 end
 
-get '/recipe/:id' do
+get '/recipes/:id' do
    @recipe = Recipe.find(params[:id])
   erb :specific_recipe
 end

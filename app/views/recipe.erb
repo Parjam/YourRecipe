@@ -1,6 +1,6 @@
 <div class="container">
   <% Recipe.all.each do |recipe| %>
-  <p><a href="/recipe/<%=recipe.id%>"><%= recipe.title%></a></p>
+  <p><a href="/recipes/<%=recipe.id%>"><%= recipe.title%></a></p>
   <% end %>
   <form action="/recipes/new" method="get">
     <input type="submit" value="Create a recipe">
