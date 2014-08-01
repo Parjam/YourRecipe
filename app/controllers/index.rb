@@ -47,6 +47,10 @@ get '/recipes/new' do
   erb :create_recipe
 end
 
+get '/recipe/:id' do
+  erb :specific_recipe
+end
+
 
 # create a recipe in the database
 post '/recipes' do
