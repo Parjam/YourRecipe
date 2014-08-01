@@ -11,7 +11,7 @@ post '/sessions' do
   end
 
   if logged_in?
-    redirect "/recipes/#{current_user.id}"
+    redirect "/recipes"
   else
     flash[:error] = "Your username or password is incorrect!"
     redirect '/'
@@ -39,37 +39,24 @@ end
 
 # display a list of all recipes
 get '/recipes' do
-  if logged_in?
-    erb :recipe
-  else
-    redirect '/'
-  end
+  erb :recipe
 end
 
 # display the form to create a recipe
 get '/recipes/new' do
-  if logged_in?
-    erb :create_recipe
-  else
-    redirect '/'
-  end
+  erb :create_recipe
 end
 
 
 # create a recipe in the database
 post '/recipes' do
   recipe = Recipe.create(params)
-  # recipe.user_id = session[:user_id]
   redirect '/recipes'
 end
 
 # updates a specific recipe in the database only by the user that created it
 patch '/recipes/:id' do
-  if logged_in?
-    erb :recipe_update
-  else
-    redirect'/'
-  end
+  erb :recipe_update
 end
 
 
